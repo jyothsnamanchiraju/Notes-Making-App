@@ -65,6 +65,15 @@ class Sidebar extends Component{
             this.setState({trashHighlight:'catalog-list'});
     }
 
+    spadSelectHandler=()=>{
+        this.props.scratchPad(true); 
+    }
+
+    notesSelectHandler=(o)=>{ 
+        this.props.notes(o); 
+    }
+
+
     render(){
         return(
             
@@ -73,7 +82,8 @@ class Sidebar extends Component{
                     
                         <div    className={this.state.newNotesHighlight} 
                                 onMouseOver={()=>this.newNotesMouseOver()} 
-                                onMouseOut={()=>this.newNotesMouseOut()} >
+                                onMouseOut={()=>this.newNotesMouseOut()} 
+                                onClick = {()=>this.notesSelectHandler('new')}>
 
                             <PlusBox style={{margin:'5px'}}/> 
                             <Typography align='left' variant='h6'>New note</Typography>
@@ -83,25 +93,29 @@ class Sidebar extends Component{
 
                                 <div className={this.state.spadHighlight} 
                                      onMouseOver={()=>this.catalogListMouseOver('spad')}
-                                     onMouseOut={()=>this.catalogListMouseOut('spad')}>            
+                                     onMouseOut={()=>this.catalogListMouseOut('spad')}
+                                     onClick={()=>this.spadSelectHandler()}>            
                                     <MakeNotes/>
                                     <Typography align='left' variant='subtitle1'>Scratchpad</Typography>
                                 </div>
                                 <div className={this.state.notesHighlight}
                                      onMouseOver={()=>this.catalogListMouseOver('notes')}
-                                     onMouseOut={()=>this.catalogListMouseOut('notes')}>
+                                     onMouseOut={()=>this.catalogListMouseOut('notes')}
+                                     onClick={()=>this.notesSelectHandler('notes')}>
                                     <NoteText/>
                                     <Typography align='left' variant='subtitle1'>Notes</Typography>
                                 </div>
                                 <div className={this.state.favHighlight}
                                      onMouseOver={()=>this.catalogListMouseOver('fav')}
-                                     onMouseOut={()=>this.catalogListMouseOut('fav')}>
+                                     onMouseOut={()=>this.catalogListMouseOut('fav')}
+                                     onClick={()=>this.notesSelectHandler('fav')}>
                                     <Star/>
                                     <Typography align='left' variant='subtitle1'>Favourites</Typography>
                                 </div>
                                 <div className={this.state.trashHighlight}
                                      onMouseOver={()=>this.catalogListMouseOver('trash')}
-                                     onMouseOut={()=>this.catalogListMouseOut('trash')}>
+                                     onMouseOut={()=>this.catalogListMouseOut('trash')}
+                                     onClick={()=>this.notesSelectHandler('trash')}>
                                     <Trash/>
                                     <Typography align='left' variant='subtitle1'>Trash</Typography>
                                 </div>
