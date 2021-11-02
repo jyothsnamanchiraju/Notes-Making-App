@@ -38,6 +38,7 @@
     margin: 5px; 
     height: 40px;
     background-color: purple;
+    cursor: pointer;
 }
 
 .catalog{
@@ -66,4 +67,5 @@
     margin:5px;
     width: -webkit-fill-available; 
     background-color: grey;
+    cursor: pointer;
 }

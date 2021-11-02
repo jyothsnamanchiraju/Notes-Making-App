@@ -7,6 +7,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';  
 import ListItemText from '@mui/material/ListItemText'; 
 
+import AddNewNote from '../assets/MenuOptions/AddNewNote'; 
+import FavList from '../assets/MenuOptions/FavList'; 
+import NotesList from '../assets/MenuOptions/NotesList'; 
+import TrashList from '../assets/MenuOptions/TrashList'; 
+
 class Notespage extends Component{
     constructor(){
         super(); 
@@ -18,6 +23,8 @@ class Notespage extends Component{
     listItemHandler=()=>{
             this.setState({listItemSelect:"list-item-select"}); 
     }
+
+  
 
     render(){
         return(
@@ -34,6 +41,24 @@ class Notespage extends Component{
                                     </ListItemButton>
                                 </ListItem>
                         </List>
+                        {this.props.type === 'new'?
+                            <div>
+                                <AddNewNote/> 
+                                <NotesList/>
+                            </div>
+                            : this.props.type ==='fav'?
+                            <div>
+                                 <FavList/>
+                            </div>
+                            : this.props.type === 'trash'?
+                            <div> 
+                                 <TrashList/>
+                            </div>
+                            : 
+                            <div>
+                                <NotesList/>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="notes-content">
