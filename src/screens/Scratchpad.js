@@ -4,7 +4,21 @@ import { Typography } from '@material-ui/core';
 import { TextareaAutosize } from '@material-ui/core';
 
 class Scratchpad extends Component{
+    constructor(){
+        super();
+        this.state={
+            scratchText:""
+        }
+    }
 
+    componentWillMount(){
+        this.setState({scratchText: this.props.sText});
+    }
+
+    scratchTextHandler=(e)=>{
+        this.setState({scratchText: e.target.value});
+        this.props.scratch(e.target.value); 
+    }
     render(){
         return(
             <div className="scratch-area">
@@ -15,7 +29,8 @@ class Scratchpad extends Component{
                                         size='large'
                                         variant='filled'
                                         style={{width:'1000px', border:'none'}}
-                                        > 
+                                        value={this.state.scratchText}
+                                        onChange={this.scratchTextHandler}> 
                 </TextareaAutosize>
                
                 </div> 

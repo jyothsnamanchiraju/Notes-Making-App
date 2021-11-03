@@ -9,6 +9,7 @@ class Home extends Component{
         super(); 
         this.state={
             scratchSelected: false,
+            scratchText:"",
             notesType:""
         }
     }
@@ -31,10 +32,21 @@ class Home extends Component{
         this.setState({scratchSelected:false, notesType:o});
     }
 
+ /**
+  * The below method retains the text from scratchpad 
+  * and is sent to scratchpad through props
+  * The Scratchpad component is sent two props- 
+  * 'scratch' it retains the original message in the scrathpad 
+  * 'sText' it suggests the previous scratch before mounting the component. 
+  * */   
+      retainScratchText=(r)=>{
+          this.setState({scratchText:r});
+      }
+
     render(){
         return(<div className="home">
             <Sidebar scratchPad={this.handleScratchpad} notes={this.handleNotes} />
-            {   this.state.scratchSelected ? <Scratchpad/>
+            {   this.state.scratchSelected ? <Scratchpad scratch={this.retainScratchText} sText={this.state.scratchText}/>
                                            : <Notespage type={this.state.notesType}/>
             }
         </div>);
