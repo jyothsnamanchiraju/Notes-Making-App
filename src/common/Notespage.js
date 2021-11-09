@@ -16,15 +16,38 @@ class Notespage extends Component{
     constructor(){
         super(); 
         this.state={
-            listItemSelect:""
+            listItemSelect:"", 
+            notes:[{
+                    id:1, 
+                    text:"corn**",
+                    category:"trash",
+                    favourite:false
+                    }, 
+                   {
+                    id:2,
+                    text:"potato",
+                    category:"",
+                    favourite:false
+                    },
+                    {
+                     id:3, 
+                     text:"tomato**",
+                     category:"trash",
+                     favourite:true
+                    },
+                    {
+                    id:4,
+                    text:"pumpkin",
+                    category:"",
+                    favourite:true
+                }
+                ]
         }
     }
 
     listItemHandler=()=>{
             this.setState({listItemSelect:"list-item-select"}); 
     }
-
-  
 
     render(){
         return(
@@ -48,15 +71,15 @@ class Notespage extends Component{
                             </div>
                             : this.props.type ==='fav'?
                             <div>
-                                 <FavList/>
+                                 <FavList nts={this.state.notes}/>
                             </div>
                             : this.props.type === 'trash'?
                             <div> 
-                                 <TrashList/>
+                                 <TrashList nts={this.state.notes}/>
                             </div>
                             : 
                             <div>
-                                <NotesList/>
+                                <NotesList nts={this.state.notes}/>
                             </div>
                         }
                     </div>
